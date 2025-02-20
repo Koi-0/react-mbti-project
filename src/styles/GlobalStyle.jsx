@@ -7,8 +7,9 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
 }
 a {
-    font-weight: 500;
+    font-weight: bold;
     color: #ff5a5f;
+    text-decoration: inherit;
 }
 `;
 
