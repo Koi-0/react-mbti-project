@@ -1,5 +1,13 @@
+import { Link } from "react-router-dom";
+
 const HomePage = () => {
-    return <div>HomePage</div>;
+    return (
+        <>
+            <Link to={"/loginPage"}>
+                <div>HomePage</div>
+            </Link>
+        </>
+    );
 };
 
 export default HomePage;
