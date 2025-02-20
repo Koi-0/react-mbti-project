@@ -5,10 +5,12 @@ import SignupPage from "./pages/SignupPage";
 import ProfilePage from "./pages/ProfilePage";
 import TestPage from "./pages/TestPage";
 import TestResultPage from "./pages/TestResultPage";
+import GlobalStyle from "./styles/GlobalStyle";
 
 const App = () => {
     return (
         <BrowserRouter>
+            <GlobalStyle />
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/loginPage" element={<LoginPage />} />
