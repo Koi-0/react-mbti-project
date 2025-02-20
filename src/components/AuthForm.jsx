@@ -8,7 +8,7 @@ const AuthForm = () => {
                 <form className="space-y-6 bg-gray-50 p-6 rounded-lg shadow-md">
                     <input type="text" name="id" placeholder="아이디" className="w-full p-4 border border-gray-300 rounded-lg" />
                     <input type="text" name="password" placeholder="비밀번호" className="w-full p-4 border border-gray-300 rounded-lg" />
-                    <button type="submit" className="w-full bg-[#FF5A5F] text-white py-3 rounded-lg text-center hover:text-[#FF5A5F]">
+                    <button type="submit" className="btn-primary">
                         로그인
                     </button>
                 </form>
