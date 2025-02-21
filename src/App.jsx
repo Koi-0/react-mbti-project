@@ -10,19 +10,15 @@ import Header from "./components/Header";
 const App = () => {
     return (
         <BrowserRouter>
-            <div className="h-full bg-gray-100 flex flex-col justify-between">
-                <Header />
-                <main className="container mx-auto pt-10 main">
-                    <Routes>
-                        <Route path="/" element={<HomePage />} />
-                        <Route path="/loginPage" element={<LoginPage />} />
-                        <Route path="/signupPage" element={<SignupPage />} />
-                        <Route path="/profilePage" element={<ProfilePage />} />
-                        <Route path="/testPage" element={<TestPage />} />
-                        <Route path="/testResultPage" element={<TestResultPage />} />
-                    </Routes>
-                </main>
-            </div>
+            <Header />
+            <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/loginPage" element={<LoginPage />} />
+                <Route path="/signupPage" element={<SignupPage />} />
+                <Route path="/profilePage" element={<ProfilePage />} />
+                <Route path="/testPage" element={<TestPage />} />
+                <Route path="/testResultPage" element={<TestResultPage />} />
+            </Routes>
         </BrowserRouter>
     );
 };
