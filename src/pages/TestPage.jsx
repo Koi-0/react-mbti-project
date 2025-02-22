@@ -1,6 +1,6 @@
 const TestPage = () => {
     return (
-        <main className="h-full bg-gray-100 flex flex-col items-center justify-center p-[2.5rem]">
+        <div className="w-full flex flex-col items-center justify-center">
             <h1 className="text-gray-700 text-5xl font-bold mb-6">
                 무료 성격 테스트
             </h1>
@@ -31,7 +31,7 @@ const TestPage = () => {
                 </div>
             </div>
             <button className="btn-primary">내 성격 알아보러 가기</button>
-        </main>
+        </div>
     );
 };
 
