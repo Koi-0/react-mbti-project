@@ -21,10 +21,11 @@ const LoginPage = () => {
         e.preventDefault();
 
         try {
-            await login(loginState);
+            const response = await login(loginState);
 
             // 로그인에 성공한 경우
             alert("로그인이 완료되었습니다.");
+            localStorage.setItem("accessToken => ", response.accessToken); // accessToken 저장
             navigate("/");
         } catch (error) {
             // 아이디가 존재하지 않는 경우

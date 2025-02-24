@@ -9,35 +9,24 @@ export const register = async (userData) => {
 };
 
 export const login = async (userData) => {
-    // const response = await axios.post(
-    //     `${API_URL}/login?expiresIn=10m`,
-    //     userData
-    // );
-
     const response = await axios.post(`${API_URL}/login`, userData);
-
-    // 서버가 반환하는 토큰
-    const token = response.data.token;
-    if (token) {
-        localStorage.setItem("token", token); // 토큰 저장
-    }
 
     return response.data;
 };
 
-export const getUserProfile = async (token) => {
+export const getUserProfile = async (accessToken) => {
     // authorization 속성 정의
     const response = await axios.get(`${API_URL}/user`, {
         headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${accessToken}`,
         },
     });
 
     return response.data;
 };
 
-export const updateProfile = async (imgFile, nickname, token) => {
+export const updateProfile = async (imgFile, nickname, accessToken) => {
     // 이미지 파일을 FormData에 담는 방법
     const formData = new FormData();
 
@@ -48,7 +37,7 @@ export const updateProfile = async (imgFile, nickname, token) => {
     const response = await axios.patch(`${API_URL}/profile`, formData, {
         headers: {
             "Content-Type": "multipart/form-data",
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${accessToken}`,
         },
     });
 
