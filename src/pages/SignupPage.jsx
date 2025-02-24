@@ -11,8 +11,6 @@ const SignupPage = () => {
         nickname: "",
     });
 
-    console.log("registerState =>", registerState);
-
     const onChangeHandler = (e) => {
         e.preventDefault();
         const { name, value } = e.target;
@@ -24,13 +22,17 @@ const SignupPage = () => {
         e.preventDefault();
 
         try {
-            const response = await register(registerState);
-            console.log("회원가입 성공 : ", response);
+            await register(registerState); // 회원가입 API 요청
+
             alert("회원가입이 완료되었습니다.");
             navigate("/loginPage");
         } catch (error) {
-            console.error("회원가입 실패 : ", error);
-            alert("회원가입에 실패했습니다. 다시 시도해주세요!");
+            // 실패 응답 처리
+            if (error.response && error.response.status === 409) {
+                alert("이미 존재하는 아이디입니다.");
+            } else {
+                alert("회원가입에 실패했습니다. 다시 시도해주세요.");
+            }
         }
     };
 
