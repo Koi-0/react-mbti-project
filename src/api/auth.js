@@ -3,69 +3,54 @@ import axios from "axios";
 const API_URL = "https://www.nbcamp-react-auth.link";
 
 export const register = async (userData) => {
-    try {
-        const response = await axios.post(`${API_URL}/register`, userData);
+    const response = await axios.post(`${API_URL}/register`, userData);
 
-        return response.data;
-    } catch (error) {
-        console.log("error =>", error);
-    }
+    return response.data;
 };
 
 export const login = async (userData) => {
-    try {
-        const response = await axios.post(
-            `${API_URL}/login?expiresIn=10m`,
-            userData
-        );
+    // const response = await axios.post(
+    //     `${API_URL}/login?expiresIn=10m`,
+    //     userData
+    // );
 
-        // 서버가 반환하는 토큰
-        const token = response.data.token;
-        if (token) {
-            localStorage.setItem("token", token); // 토큰 저장
-        }
+    const response = await axios.post(`${API_URL}/login`, userData);
 
-        return response.data;
-    } catch (error) {
-        console.log("error =>", error);
+    // 서버가 반환하는 토큰
+    const token = response.data.token;
+    if (token) {
+        localStorage.setItem("token", token); // 토큰 저장
     }
+
+    return response.data;
 };
 
 export const getUserProfile = async (token) => {
-    try {
-        // authorization 속성 정의
-        const response = await axios.get(`${API_URL}/user`, {
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${token}`,
-            },
-        });
+    // authorization 속성 정의
+    const response = await axios.get(`${API_URL}/user`, {
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+        },
+    });
 
-        return response.data;
-    } catch (error) {
-        console.log("error =>", error);
-    }
+    return response.data;
 };
 
 export const updateProfile = async (imgFile, nickname, token) => {
-    // 이미지파일을 FormData에 담는 방법
+    // 이미지 파일을 FormData에 담는 방법
     const formData = new FormData();
 
-    // avatar와 nickname 중 하나 또는 모두 변경 가능
     formData.append("avatar", imgFile); // imgFile 추가
     formData.append("nickname", nickname); // nickname 추가
 
-    try {
-        // 요청 시 Content-Type에 유의
-        const response = await axios.patch(`${API_URL}/profile`, formData, {
-            headers: {
-                "Content-Type": "multipart/form-data",
-                Authorization: `Bearer ${token}`,
-            },
-        });
+    // 요청 시 Content-Type 유의
+    const response = await axios.patch(`${API_URL}/profile`, formData, {
+        headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${token}`,
+        },
+    });
 
-        return response.data;
-    } catch (error) {
-        console.log("error =>", error);
-    }
+    return response.data;
 };
