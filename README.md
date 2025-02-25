@@ -1,8 +1,38 @@
-# React + Vite
+# 🐾 Mbti Test
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<br>
 
-Currently, two official plugins are available:
+## 📌 프로젝트 개요
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+이 프로젝트는 개인 프로젝트로, React와 Vite를 기반으로 개발되었습니다.  
+사용자가 MBTI 성격 유형 검사를 진행하고, 결과를 확인할 수 있으며, 사용자 인증 기능과 테스트 결과 저장 기능을 포함하고 있는 웹 애플리케이션을 제작하는 프로젝트입니다.
+
+<br>
+
+## 🎯 프로젝트 목표
+
+-   사용자 인증 구현: 회원가입 및 로그인 기능 제공
+-   MBTI 테스트 제공: 질문 응답을 통해 성격 유형 확인
+-   테스트 결과 저장 및 조회: 사용자별 테스트 결과 저장 및 조회 기능 제공
+-   JSON 서버 활용: 테스트 데이터 관리 및 CRUD 기능 제공
+-   반응형 UI 적용: 다양한 기기에서 최적화된 사용자 경험 제공
+-   배포 및 최적화: 기능 검토 후 최종 배포
+
+<br>
+
+## 🛠️ 사용 기술
+
+-   React (컴포넌트 기반 UI 개발 및 상태 관리)
+-   Vite (빠른 빌드 및 개발 환경 제공)
+-   React Router (페이지 이동 및 인증 보호 기능 구현)
+-   Tailwind CSS (반응형 UI 스타일링)
+-   JSON Server (테스트 결과 저장 및 CRUD 기능 구현)
+
+<br>
+
+## 🚀 기능 소개
+
+-   사용자 인증 : 회원가입 및 로그인 기능 제공 및 JWT 인증을 활용한 사용자 보호 및 ProtectedRoute를 사용하여 비로그인 사용자의 접근 제한
+-   MBTI 테스트 : questions.js를 활용한 질문 리스트 제공 및 calculateMBTI 함수를 이용해 성격 유형 분석 및 결과 반환 및 모달 또는 페이지 형태의 직관적인 테스트 진행 및 결과 제공
+-   테스트 결과 관리 : JSON Server를 활용한 테스트 결과 저장 및 조회 및 사용자의 테스트 기록을 리스트 형태로 제공 및 테스트 결과 삭제 및 공개 여부 설정 기능 지원
+-   배포 및 개선 : 기능별 테스트 및 버그 수정 및 JSON Server 및 애플리케이션 배포 및 사용자 피드백을 반영한 최종 개선
