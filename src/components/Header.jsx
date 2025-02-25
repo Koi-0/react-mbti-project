@@ -1,6 +1,10 @@
+import { useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
+import { MbtiContext } from "../context/MbtiContext";
 
 const Header = () => {
+    const { isLoggedIn } = useContext(MbtiContext);
+
     return (
         <div className="w-screen h-screen bg-gray-100 flex flex-col justify-between">
             <header className="bg-gray-100 p-4 drop-shadow-md">
@@ -9,9 +13,9 @@ const Header = () => {
                         홈
                     </Link>
                     <div>
-                        <Link to={"/loginPage"} className="text-primary">
-                            로그인
-                        </Link>
+                        <button className="text-primary">
+                            {isLoggedIn ? "로그아웃" : "로그인"}
+                        </button>
                     </div>
                 </nav>
             </header>
