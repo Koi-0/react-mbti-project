@@ -1,9 +1,27 @@
+import { useState } from "react";
 import { MbtiContext } from "../context/MbtiContext";
 
 const MbtiProvider = ({ children }) => {
-    // 로직 추가
+    const [isLoggedIn, setIsLoggedIn] = useState(
+        !!localStorage.getItem("accessToken")
+    );
 
-    return <MbtiContext.Provider value={{}}>{children}</MbtiContext.Provider>;
+    const handleInputChange = (e, setState) => {
+        const { name, value } = e.target;
+        setState((prev) => ({ ...prev, [name]: value }));
+    };
+
+    return (
+        <MbtiContext.Provider
+            value={{
+                isLoggedIn,
+                setIsLoggedIn,
+                handleInputChange,
+            }}
+        >
+            {children}
+        </MbtiContext.Provider>
+    );
 };
 
 export default MbtiProvider;
