@@ -1,22 +1,21 @@
 import { Link, useNavigate } from "react-router-dom";
 import AuthForm from "../components/AuthForm";
-import { useState } from "react";
 import { register } from "../api/auth";
+import { useContext, useState } from "react";
+import { MbtiContext } from "../context/MbtiContext";
 
 const SignupPage = () => {
-    const navigate = useNavigate();
+    const { handleInputChange } = useContext(MbtiContext);
+
     const [registerState, setRegisterState] = useState({
         id: "",
         password: "",
         nickname: "",
     });
 
-    const onChangeHandler = (e) => {
-        e.preventDefault();
-        const { name, value } = e.target;
+    const navigate = useNavigate();
 
-        setRegisterState((prev) => ({ ...prev, [name]: value }));
-    };
+    const onChangeHandler = (e) => handleInputChange(e, setRegisterState);
 
     const onSubmitHandler = async (e) => {
         e.preventDefault();

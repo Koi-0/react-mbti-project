@@ -1,21 +1,20 @@
 import { Link, useNavigate } from "react-router-dom";
 import AuthForm from "../components/AuthForm";
-import { useState } from "react";
 import { login } from "../api/auth";
+import { useContext, useState } from "react";
+import { MbtiContext } from "../context/MbtiContext";
 
 const LoginPage = () => {
-    const navigate = useNavigate();
+    const { setIsLoggedIn, handleInputChange } = useContext(MbtiContext);
+
     const [loginState, setLoginState] = useState({
         id: "",
         password: "",
     });
 
-    const onChangeHandler = (e) => {
-        e.preventDefault();
-        const { name, value } = e.target;
+    const navigate = useNavigate();
 
-        setLoginState((prev) => ({ ...prev, [name]: value }));
-    };
+    const onChangeHandler = (e) => handleInputChange(e, setLoginState);
 
     const onSubmitHandler = async (e) => {
         e.preventDefault();
@@ -23,9 +22,11 @@ const LoginPage = () => {
         try {
             const response = await login(loginState);
 
-            // 로그인에 성공한 경우
+            // 로그인 성공
             alert("로그인이 완료되었습니다.");
-            localStorage.setItem("accessToken => ", response.accessToken); // accessToken 저장
+            localStorage.setItem("accessToken", response.accessToken); // accessToken 저장
+
+            setIsLoggedIn(true);
             navigate("/");
         } catch (error) {
             // 아이디가 존재하지 않는 경우
@@ -34,6 +35,8 @@ const LoginPage = () => {
             } else {
                 alert("로그인에 실패했습니다. 다시 시도해주세요.");
             }
+
+            setIsLoggedIn(false);
         }
     };
 
