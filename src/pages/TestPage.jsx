@@ -1,7 +1,19 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { calculateMBTI } from "../utils/mbtiCalculator";
 
 const TestPage = () => {
     const navigate = useNavigate();
+    const [result, setResult] = useState(null);
+
+    const handleTestSubmit = async (answers) => {
+        const mbtiResult = calculateMBTI(answers);
+        /* Test 결과는 mbtiResult 라는 변수에 저장이 됩니다. 이 데이터를 어떻게 API 를 이용해 처리 할 지 고민해주세요. */
+    };
+
+    const handleNavigateToResults = () => {
+        navigate("/results");
+    };
 
     const buttonClick = () => {
         alert("로그인이 필요한 서비스입니다. 로그인 페이지로 이동합니다.");
